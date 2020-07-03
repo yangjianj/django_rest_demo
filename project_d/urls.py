@@ -15,9 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.conf.urls import url,include
 from normal_app import views
+from rest_app import urls as rest_app
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path(r'normal/',views.CourseView.as_view())
+    path(r'admin/', admin.site.urls),
+    path(r'normal/',views.CourseView.as_view()),
+    url(r'^rest/',include(rest_app)),
 ]
